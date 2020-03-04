@@ -43,7 +43,7 @@ namespace Kickstart.Pass2.DataStoreProject.SqlServer
                 IsConst = true,
                 FieldType = "string",
                 FieldName = "EnvPrefix",
-                DefaultValue = @"""VIDEA_DAYPART_SVC_TESTS_"""
+                DefaultValue = @"""SAMPLE_SVC_TESTS_"""
             });
 
             @class.Property.Add(new CProperty()

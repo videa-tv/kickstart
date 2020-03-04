@@ -79,21 +79,12 @@ namespace Kickstart
         {
             var configuration = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", false)
-                //.AddEnvironmentVariables("VIDEA_UM_APP_")
+               
                 .Build();
 
             var serviceProvider = new ServiceCollection()
                 .AddSingleton<IConfiguration>(configuration)
                 .AddLogging(configure => configure.SetMinimumLevel(LogLevel.Debug))
-                 /*
-                .AddTransient<IUnifiedMenuServiceFactory, UnifiedMenuServiceFactory>()
-                .AddTransient<IUnifiedMenuAppServiceFactory, UnifiedMenuAppServiceFactory>()
-                .AddTransient<IUnifiedMenuServiceSettings, UnifiedMenuServiceSettings>()
-                .AddTransient<ICommand<RegisterAppOptions>, RegisterAppCommand>()
-                .AddTransient<ICommand<RegisterMenuOptions>, RegisterMenuCommand>()
-                .AddTransient<IContentFileProvider, ContentFileProvider>()
-                .AddTransient<RegisterMenuCommandValidator>()
-                */
                 .BuildServiceProvider();
 
             var loggerFactory = serviceProvider.GetService<ILoggerFactory>();

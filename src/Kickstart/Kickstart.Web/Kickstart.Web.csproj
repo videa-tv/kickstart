@@ -1,0 +1,137 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
+    <TypeScriptToolsVersion>Latest</TypeScriptToolsVersion>
+    <IsPackable>false</IsPackable>
+    <SpaRoot>ClientApp\</SpaRoot>
+    <DefaultItemExcludes>$(DefaultItemExcludes);$(SpaRoot)node_modules\**</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Google.Protobuf" Version="3.11.1" />
+    <PackageReference Include="Grpc.Core" Version="2.25.0" />
+    <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="3.7.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Content Remove="$(SpaRoot)**" />
+    <Content Remove="ClientApp\disabled\BubbleErdApp\**" />
+    <Content Remove="ClientApp\src\components\BubbleErdApp\**" />
+    <None Remove="$(SpaRoot)**" />
+    <None Remove="ClientApp\disabled\BubbleErdApp\**" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\**" />
+    <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="ClientApp\disabled\BubbleErdApp\**" />
+    <Compile Remove="ClientApp\src\components\BubbleErdApp\**" />
+    <EmbeddedResource Remove="ClientApp\disabled\BubbleErdApp\**" />
+    <EmbeddedResource Remove="ClientApp\src\components\BubbleErdApp\**" />
+    <TypeScriptCompile Remove="ClientApp\disabled\BubbleErdApp\**" />
+    <TypeScriptCompile Remove="ClientApp\src\components\BubbleErdApp\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="ClientApp\disabled\BubbleErd.tsx" />
+    <None Remove="ClientApp\src\App.tsx" />
+    <None Remove="ClientApp\src\components\BubbleErd.tsx" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\App.css" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\BubbleErdApp.tsx" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\index.css" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\labels.tsx" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\links.tsx" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\miserables.ts" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\nodes.tsx" />
+    <None Remove="ClientApp\src\components\BubbleErdApp\types.ts" />
+    <None Remove="ClientApp\src\css\form-labels-on-top.css" />
+    <None Remove="ClientApp\src\Sample\SampleFileReader.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\components\BubbleErd.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\Kickstart.Build.Services\Proto\Generated\KickstartBuildService.cs" Link="Proto\Reference\KickstartBuildService.cs" />
+    <Compile Include="..\Kickstart.Build.Services\Proto\Generated\KickstartBuildServiceGrpc.cs" Link="Proto\Reference\KickstartBuildServiceGrpc.cs" />
+    <Compile Include="..\Kickstart.Services\Proto\Generated\KickstartService.cs" Link="Proto\Reference\KickstartService.cs" />
+    <Compile Include="..\Kickstart.Services\Proto\Generated\KickstartServiceGrpc.cs" Link="Proto\Reference\KickstartServiceGrpc.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\css\form-labels-on-top.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\disabled\" />
+    <Folder Include="Proto\Reference\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\Sample\BuildAndRelease\PartyModel\DEV_QA\CreateBuildDefinition.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\BuildAndRelease\PartyModel\DEV_QA\CreateRelease.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\BuildAndRelease\PartyModel\DEV_QA\CreateReleaseDefinition.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Proto\PartyModel.proto">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Sql\Sample1\Functions.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Sql\Sample1\StoredProcs.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Sql\Postgresql.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Sql\Sample1\Tables.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Sql\Sample1\TableTypes.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="ClientApp\src\Sample\Sql\Sample1\Views.sql">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
+    <!-- Ensure Node.js is installed -->
+    <Exec Command="node --version" ContinueOnError="true">
+      <Output TaskParameter="ExitCode" PropertyName="ErrorCode" />
+    </Exec>
+    <Error Condition="'$(ErrorCode)' != '0'" Text="Node.js is required to build and run this project. To continue, please install Node.js from https://nodejs.org/, and then restart your command prompt or IDE." />
+    <Message Importance="high" Text="Restoring dependencies using 'npm'. This may take several minutes..." />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+  </Target>
+
+  <Target Name="PublishRunWebpack" AfterTargets="ComputeFilesToPublish">
+    <!-- As part of publishing, ensure the JS resources are freshly built in production mode -->
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm install" />
+    <Exec WorkingDirectory="$(SpaRoot)" Command="npm run build" />
+
+    <!-- Include the newly-built files in the publish output -->
+    <ItemGroup>
+      <DistFiles Include="$(SpaRoot)build\**" />
+      <ResolvedFileToPublish Include="@(DistFiles->'%(FullPath)')" Exclude="@(ResolvedFileToPublish)">
+        <RelativePath>%(DistFiles.Identity)</RelativePath>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      </ResolvedFileToPublish>
+    </ItemGroup>
+  </Target>
+
+</Project>

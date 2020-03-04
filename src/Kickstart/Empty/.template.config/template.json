@@ -1,0 +1,21 @@
+{
+  "author": "John Stephens",
+  "classifications": [],
+  "description": "template description A",
+  "name": "",
+  "defaultName": "MyProject",
+  "identity": "Kickstart",
+  "groupIdentity": "Kickstart.Template",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "shortName": "Kickstart",
+  "sourceName": "Empty",
+  "guids": [],
+  "primaryOutputs": [
+    {
+      "path": "Empty.csproj"
+    }
+  ]
+}

@@ -1,0 +1,141 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions {
+	string version = 50000;
+}
+
+package company.KickstartBuild.services.types;
+
+option csharp_namespace = "Company.KickstartBuild.Services.Types";
+
+// * 1.0.0 - Initial contract implementation
+// * 1.1.0 - Support authentication for SetKickstartBuild method
+// * 1.2.0 - Add DeleteKickstartBuild method
+// * 1.3.0 - Add SetKickstartBuildForStations method
+// * 1.3.1 - Move version property to types.proto file
+option (version) = "1.3.1";
+
+/*
+The Kickstart Build Service provides methods to build TFS Build Definitions, Builds, Release Definitions, and Releases
+
+*/ 
+service KickstartBuildService {
+
+  rpc CreateReleaseDefinition(CreateReleaseDefinitionRequest) returns (CreateReleaseDefinitionResponse);
+  rpc CreateRelease(CreateReleaseRequest) returns (CreateReleaseResponse);
+  rpc DeployRelease(DeployReleaseRequest) returns (DeployReleaseResponse);
+  rpc QueueBuild(QueueBuildRequest) returns (QueueBuildResponse);
+
+  rpc CreateBuildDefinition(CreateBuildDefinitionRequest) returns (CreateBuildDefinitionResponse);
+ 
+}
+
+message DeployReleaseRequest {
+	int32 release_identifier =1;
+	int32 environment_identifier =2;
+	string project_id= 3;
+}
+
+message DeployReleaseResponse {
+}
+
+message CreateReleaseRequest {
+	ReleaseDefinition release_definition =1;
+
+}
+message CreateReleaseResponse {
+	ReleaseDefinition release_definition =1;
+}
+
+
+message CreateReleaseDefinitionResponse {
+	ReleaseDefinition release_definition =1;
+}
+
+message ReleaseDefinition {
+	int32 release_definition_identifier =1;
+	string release_definition_name =2;
+	repeated Environment environments = 3;
+	repeated BuildDefinition build_definitions = 4;
+
+}
+message CreateReleaseDefinitionRequest {
+	google.protobuf.StringValue service_name = 1;
+	google.protobuf.StringValue reuse_aws_stack_from_service_name = 2;
+	google.protobuf.StringValue service_folder =3;
+	google.protobuf.StringValue configuration_folder =4; 
+	bool is_prod_path = 5;
+	bool needs_aws_user_account_created = 6;
+	ReleaseDefinition release_definition = 7;
+	repeated DatabaseServer database_servers = 8;
+	
+}
+
+message QueueBuildRequest {
+	BuildDefinition build_definition = 1;
+}
+message QueueBuildResponse {
+	Build build = 1;
+}
+
+message CreateBuildDefinitionRequest {
+	google.protobuf.StringValue service_name = 1;
+
+	BuildDefinition build_definition = 2;
+}
+
+message CreateBuildDefinitionResponse {
+
+	google.protobuf.StringValue service_name = 1;
+	BuildDefinition build_definition = 2;
+}
+
+message BuildDefinition {
+	int32 build_definition_identifier = 1;
+	string build_definition_name = 2;
+	google.protobuf.StringValue repo_name = 5;
+	google.protobuf.StringValue repo_path = 6;
+
+}
+
+message Build {
+	int32 build_identifier = 1;
+}
+
+message Environment {
+	int32 environment_identifier = 1;
+
+	string environment_name  =2;
+	EnvironmentTag environment_tag = 3; 
+}
+
+message DatabaseServer {
+	DbmsType dbms_type = 1;
+	ServerLocation server_location =2;
+	repeated Database databases = 3;
+}
+enum EnvironmentTag {
+	DEV = 0;
+	QA = 1;
+	ALPHA=2;
+	PROD =3;
+	OTHER=4;
+}
+enum DbmsType {
+	SQLSERVER=0;
+	POSTGRES=1;
+	MYSQL=2;
+}
+
+enum ServerLocation {
+	ONPREMISE = 0;
+	AWS = 1;
+}
+
+message Database {
+	string database_name = 1;
+	string project_folder = 2;
+}

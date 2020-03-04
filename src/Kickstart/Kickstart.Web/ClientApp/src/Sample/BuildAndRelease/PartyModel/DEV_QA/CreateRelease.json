@@ -1,0 +1,11 @@
+{
+  "release_definition": {
+    "release_definition_name": "VO.App.EventCapture.DCOS",
+    "build_definitions": [
+      {
+        "build_definition_name": "Company.EventStreaming.Capture"
+
+      }
+    ]
+  }
+}

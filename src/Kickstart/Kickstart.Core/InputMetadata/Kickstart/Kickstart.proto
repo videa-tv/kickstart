@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions {
+	string version = 50000;
+}
+
+package kickstart.services.types;
+
+option csharp_namespace = "Kickstart.Services.Types";
+
+// * 1.0.0 - Initial contract implementation
+
+option (version) = "1.0.0"; //Initial Implementation
+
+/*
+*/
+
+service KickstartService {
+  rpc BuildSolution(KickstartSolutionRequest) returns (KickstartSolutionResponse);
+}
+
+
+message KickstartSolutionRequest {
+     string external_user_id = 1;
+}
+
+message KickstartSolutionResponse {
+
+}
+

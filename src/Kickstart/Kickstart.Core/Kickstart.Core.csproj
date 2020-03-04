@@ -1,0 +1,717 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A10DAAAB-0C5E-44BB-BF37-073338D978F1}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Kickstart</RootNamespace>
+    <AssemblyName>Kickstart</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Boilerplate\.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>Boilerplate\.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>Kickstart.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Boilerplate\.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>Boilerplate\.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommandLine, Version=2.4.3.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\CommandLineParser.2.4.3\lib\netstandard2.0\CommandLine.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper, Version=1.50.5.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Dapper.1.50.5\lib\net451\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Google.Protobuf, Version=3.6.1.0, Culture=neutral, PublicKeyToken=a7d26565bac4d604, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Google.Protobuf.3.6.1\lib\net45\Google.Protobuf.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Build.15.9.20\lib\net46\Microsoft.Build.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Build.Framework, Version=15.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Build.Framework.15.9.20\lib\net46\Microsoft.Build.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Schema.Sql, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4200.1\lib\net46\Microsoft.Data.Tools.Schema.Sql.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Tools.Utilities, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4200.1\lib\net46\Microsoft.Data.Tools.Utilities.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.InternalAbstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.DotNet.InternalAbstractions.1.0.0\lib\net451\Microsoft.DotNet.InternalAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.DotNet.PlatformAbstractions, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.DotNet.PlatformAbstractions.2.1.0\lib\net45\Microsoft.DotNet.PlatformAbstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Configuration.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Configuration.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Binder, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Configuration.Binder.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Binder.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.FileExtensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Configuration.FileExtensions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Configuration.Json, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Configuration.Json.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.DependencyInjection.2.2.0\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyModel, Version=2.1.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.DependencyModel.2.1.0\lib\net451\Microsoft.Extensions.DependencyModel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.FileProviders.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileProviders.Physical, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.FileProviders.Physical.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.FileSystemGlobbing, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.FileSystemGlobbing.2.2.0\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Logging.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Logging.Abstractions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Options.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Options.ConfigurationExtensions, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Options.ConfigurationExtensions.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Options.ConfigurationExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Primitives, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Extensions.Primitives.2.2.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4200.1\lib\net46\Microsoft.SqlServer.Dac.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Dac.Extensions, Version=15.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4200.1\lib\net46\Microsoft.SqlServer.Dac.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.TransactSql.ScriptDom, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4200.1\lib\net46\Microsoft.SqlServer.TransactSql.ScriptDom.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.SqlServer.DacFx.x64.150.4200.1\lib\net46\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.VisualStudio.QualityTools.UnitTestFramework.Updated.15.0.26228\lib\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.Setup.Configuration.Interop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.VisualStudio.Setup.Configuration.Interop.1.16.30\lib\net35\Microsoft.VisualStudio.Setup.Configuration.Interop.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Web.XmlTransform, Version=3.0.0.34420, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Microsoft.Web.Xdt.3.0.0\lib\net40\Microsoft.Web.XmlTransform.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.14.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\MySql.Data.8.0.14\lib\net452\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=4.0.4.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Npgsql.4.0.4\lib\net451\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Common, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Common.4.9.3\lib\net46\NuGet.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Configuration, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Configuration.4.9.3\lib\net46\NuGet.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Frameworks, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Frameworks.4.9.3\lib\net46\NuGet.Frameworks.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Packaging.4.9.3\lib\net46\NuGet.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Packaging.Core, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Packaging.Core.4.9.3\lib\net46\NuGet.Packaging.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Protocol, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Protocol.4.9.3\lib\net46\NuGet.Protocol.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Resolver, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Resolver.4.9.3\lib\net46\NuGet.Resolver.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.RuntimeModel, Version=4.2.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.RuntimeModel.4.2.0\lib\net45\NuGet.RuntimeModel.dll</HintPath>
+    </Reference>
+    <Reference Include="NuGet.Versioning, Version=4.9.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NuGet.Versioning.4.9.3\lib\net46\NuGet.Versioning.dll</HintPath>
+    </Reference>
+    <Reference Include="Onion.SolutionParser.Parser, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Onion.SolutionParser.Parser.1.0.0.0\lib\net45\Onion.SolutionParser.Parser.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Serilog.2.8.0\lib\net46\Serilog.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Extensions.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Serilog.Extensions.Logging.2.0.2\lib\net461\Serilog.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog.Settings.Configuration, Version=3.0.1.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\Serilog.Settings.Configuration.3.0.1\lib\net461\Serilog.Settings.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="SpreadsheetLight, Version=3.4.9.0, Culture=neutral, PublicKeyToken=32fbb46dc1730c57, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\SpreadsheetLight.3.4.9\lib\SpreadsheetLight.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\StructureMap.4.7.0\lib\net45\StructureMap.dll</HintPath>
+    </Reference>
+    <Reference Include="StructureMap.Microsoft.DependencyInjection, Version=1.4.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\StructureMap.Microsoft.DependencyInjection.1.4.0\lib\net451\StructureMap.Microsoft.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Buffers.4.5.0\lib\netstandard2.0\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.2.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Collections.Immutable.1.5.0\lib\netstandard2.0\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.Annotations, Version=4.2.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Console, Version=4.0.1.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Console.4.3.1\lib\net46\System.Console.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IO.Compression, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.IO.Compression.4.3.0\lib\net46\System.IO.Compression.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.IO.Compression.ZipFile, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL" />
+    <Reference Include="System.IO.FileSystem.Primitives, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.IO.FileSystem.Primitives.4.3.0\lib\net46\System.IO.FileSystem.Primitives.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.IO.Packaging, Version=4.0.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.IO.Packaging.4.5.0\lib\net46\System.IO.Packaging.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Management" />
+    <Reference Include="System.Memory, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Memory.4.5.2\lib\netstandard2.0\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.TypeExtensions, Version=4.1.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Reflection.TypeExtensions.4.5.1\lib\net461\System.Reflection.TypeExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\net45\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Threading.Tasks.Dataflow, Version=4.6.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Threading.Tasks.Dataflow.4.9.0\lib\netstandard2.0\System.Threading.Tasks.Dataflow.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.Threading.Thread.4.3.0\lib\net46\System.Threading.Thread.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\System.ValueTuple.4.5.0\lib\net461\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AssemblyInfo1.cs" />
+    <Compile Include="Commands\CmdOptions.cs" />
+    <Compile Include="Commands\CommandResult.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\KickstartFromProtoCommand.cs" />
+    <Compile Include="Commands\MegaSolutionCreateCommand.cs" />
+    <Compile Include="Commands\MetaRepoCreateCommand.cs" />
+    <Compile Include="Interface\ICEnumVisitor.cs" />
+    <Compile Include="MegaSolutionWizard\Presenter\MegaSolutionWizardPresenter.cs" />
+    <Compile Include="Pass1\Excel\IExcelToKSolutionGroupConverter.cs" />
+    <Compile Include="Pass1\KModel\Data\KFunction.cs" />
+    <Compile Include="Pass1\KModel\Project\DotNetType.cs" />
+    <Compile Include="Pass1\KModel\Project\KDataStoreTestProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KDockerComposeProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcClientProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KWebUIProject.cs" />
+    <Compile Include="Pass1\Service\KProtoFileService.cs" />
+    <Compile Include="Pass1\Service\SqlServerFunctionToCFunctionConverter.cs" />
+    <Compile Include="Pass1\SqlServer\InferTablesFromProtoService.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerFunctionReader.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerTablesReader.cs" />
+    <Compile Include="Pass2\CModel\AWS\DMS\DmsDbType.cs" />
+    <Compile Include="Pass2\CModel\AWS\DMS\Rule.cs" />
+    <Compile Include="Pass2\CModel\AWS\DMS\RuleAction.cs" />
+    <Compile Include="Pass2\CModel\AWS\DMS\RuleTarget.cs" />
+    <Compile Include="Pass2\CModel\AWS\DMS\RuleType.cs" />
+    <Compile Include="Pass2\CModel\Code\CEnumValue.cs" />
+    <Compile Include="Pass2\CModel\Code\CEnum.cs" />
+    <Compile Include="Pass2\CModel\Code\CWhere.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CFunction.cs" />
+    <Compile Include="Pass2\DataLayerProject\DataLayerServiceFactory.cs" />
+    <Compile Include="Pass2\DataLayerProject\DataLayerServiceProjectServiceBase.cs" />
+    <Compile Include="Pass2\DataLayerProject\IDataLayerServiceFactory.cs" />
+    <Compile Include="Pass2\DataLayerProject\GenericResourceDataLayerServiceProjectService.cs" />
+    <Compile Include="Pass2\DataLayerProject\IRelationalDataLayerServiceProjectService.cs" />
+    <Compile Include="Pass2\DataLayerProject\Table\CViewToCClassConverter.cs" />
+    <Compile Include="Pass2\DataLayerProject\StreamDataLayerServiceProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\DataStoreTestServiceFactory.cs" />
+    <Compile Include="Pass2\DataStoreProject\DataStoreServiceFactory.cs" />
+    <Compile Include="Pass2\DataStoreProject\Flyway\FlywayFileNameService.cs" />
+    <Compile Include="Pass2\DataStoreProject\GenericResource\IGenericResourceProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\GenericResource\GenericResourceProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\IDataStoreProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\IDataStoreServiceFactory.cs" />
+    <Compile Include="Pass2\DataStoreProject\Flyway\IFlywayFileNameService.cs" />
+    <Compile Include="Pass2\DataStoreProject\Flyway\IFlywayProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\Kinesis\KinesisProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\Kinesis\IKinesisProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\CTableToDmsRuleConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\CTableTypeToPostgresTableTypeConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\ICSchemaToSchemaConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\ICTableToDmsRuleConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\SnakeCaseVisitor.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\ICTableTypeToTableTypeConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\EmbeddedSqlQueryBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\IDataStoreTestProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\EmbeddedSqlCommandBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\AssemblyExtensionsClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\ReadSqlScriptClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\DataServiceTestClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\TestDataServiceBuilderInterfaceBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\TestDataServiceBuilderClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\SqlScriptInterfaceBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\SqlScriptClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\SqlServerSnakeCaseVisitor.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\SqlServerTestProjectService.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\StartupContainerClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\TestDataServiceClassBuilder.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\TestInitializationClassBuilder.cs" />
+    <Compile Include="Pass2\DockerComposeProject\DockerComposeProjectService.cs" />
+    <Compile Include="Pass2\Docker\IBuildScriptService.cs" />
+    <Compile Include="Pass2\GrpcClientProject\GrpcClientProjectService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\Builder\ContainerClassBuilder.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\Builder\DomainModelExtensionsBuilder.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\GrpcEnumToEnumConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\IGrpcIntegrationServiceProjectService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\IGrpcPortService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\IGrpcServiceProjectService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\ModelToEntityCClassConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\Builder\ServiceImplClassBuilder.cs" />
+    <Compile Include="Pass2\ICSolutionGenerator.cs" />
+    <Compile Include="Pass2\IKSolutionToCSolutionConverter.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\IGrpcServiceClientTestProjectService.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\IGrpcServiceIntegrationTestBusinessProjectService.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\IGrpcServiceIntegrationTestProjectService.cs" />
+    <Compile Include="Pass2\SampleData\SamplePostgresDataService.cs" />
+    <Compile Include="Pass2\SlnToCSolutionConverter.cs" />
+    <Compile Include="Pass2\CModel\Docker\CDockerComposeFile.cs" />
+    <Compile Include="Pass2\CModel\Docker\CDockerComposeProject.cs" />
+    <Compile Include="Pass2\CModel\Docker\CDockerFileService.cs" />
+    <Compile Include="Pass2\CModel\Git\CMetaRepo.cs" />
+    <Compile Include="Pass2\CModel\Git\CRepo.cs" />
+    <Compile Include="Pass1\KModel\MetadataSource.cs" />
+    <Compile Include="IKickstartService.cs" />
+    <Compile Include="Interface\IDelegateWorker.cs" />
+    <Compile Include="KickstartService.cs" />
+    <Compile Include="KickstartProgressChangedEventArgs.cs" />
+    <Compile Include="Pass1\IDbToKSolutionConverter.cs" />
+    <Compile Include="Pass1\KModel\Data\KQuery.cs" />
+    <Compile Include="Interface\ICStoredProcedureConverter.cs" />
+    <Compile Include="Pass1\Service\IProtoToKProtoConverter.cs" />
+    <Compile Include="Pass2\DataLayerProject\IDataLayerServiceProjectService.cs" />
+    <Compile Include="Pass2\DockerComposeProject\DockerComposeFileService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\IKDataLayerProjectToKProtoFileConverter.cs" />
+    <Compile Include="Pass2\WebAppProjectService.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCEnumVisitor.cs" />
+    <Compile Include="Pass3\Docker\CDockerComposeFileVisitor.cs" />
+    <Compile Include="Pass3\Docker\CDockerFileServiceVisitor.cs" />
+    <Compile Include="Pass3\Docker\ICDockerComposeFileVisitor.cs" />
+    <Compile Include="Pass3\Docker\ICDockerFileServiceVisitor.cs" />
+    <Compile Include="Pass3\Git\CRepoVisitor.cs" />
+    <Compile Include="Pass3\Git\ICRepoVisitor.cs" />
+    <Compile Include="Pass3\gRPC\ISProtoFileToProtoFileConverter.cs" />
+    <Compile Include="Pass3\ICodeGenerator.cs" />
+    <Compile Include="Pass3\ICVisualStudioVisitor.cs" />
+    <Compile Include="Pass3\IVisualStudioSolutionWriter.cs" />
+    <Compile Include="Pass3\MetaRepo\CMetaRepoVisitor.cs" />
+    <Compile Include="Pass3\MetaRepo\CompositeSolutionVisitor.cs" />
+    <Compile Include="Pass3\MetaRepo\ICMetaRepoVisitor.cs" />
+    <Compile Include="Pass3\VisualStudio2017\IFastSolutionVisitor.cs" />
+    <Compile Include="Pass3\VisualStudio2017\ICVisualStudioVisitorBase.cs" />
+    <Compile Include="Utility\ActionPrefixRemover.cs" />
+    <Compile Include="Utility\CommandProcessor.cs" />
+    <Compile Include="Pass1\Service\ProtoCompileException.cs" />
+    <Compile Include="Pass2\DataStoreProject\MySql\CSchemaToMySqlSchemaConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\MySql\CTableToMySqlTableConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\EntityToModelCClassConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\ProtoToModelCClassConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\CSchemaToPostgresSchemaConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\CTableToPostgresTableConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CStoredProcedureToCreateProcedureStatementConverter.cs" />
+    <Compile Include="Interface\ICTableConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToCreateTableStatementConverter.cs" />
+    <Compile Include="Utility\DatabaseTypes.cs" />
+    <Compile Include="Pass1\KModel\Project\KDataLayer2Project.cs" />
+    <Compile Include="Pass1\Service\BatchFileService.cs" />
+    <Compile Include="Pass1\KickstartCoreService.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerQueryReader.cs" />
+    <Compile Include="Pass1\SqlToDbConverter.cs" />
+    <Compile Include="Pass2\CModel\CPart.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CQuery.cs" />
+    <Compile Include="Pass2\CSolutionGenerator.cs" />
+    <Compile Include="Pass2\DataStoreProject\Flyway\FlywayProjectService.cs" />
+    <Compile Include="Pass2\DataLayerProject\KQueryToCClassConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\Postgres\CStoredProcedureToPostgresStoredProcedureConverter.cs" />
+    <Compile Include="Pass3\CodeGenerator.cs" />
+    <Compile Include="Pass4\DiagramGenerator.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Pass3\CSharp\CSharpClassWriter.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCAssemblyInfoVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCClassAttributeVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCClassVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCConstructorVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCFieldVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCInterfaceVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCMethodAttributeVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCMethodVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCParameterVisitor.cs" />
+    <Compile Include="Pass3\CSharp\CSharpCProperyVisitor.cs" />
+    <Compile Include="Pass3\CSharp\SnippetService.cs" />
+    <Compile Include="Pass2\CModel\GrpcType.cs" />
+    <Compile Include="Interface\IVisitor.cs" />
+    <Compile Include="Pass2\CModel\Code\CAccessModifier.cs" />
+    <Compile Include="Pass2\CModel\Code\CAssemblyInfo.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CBuildAction.cs" />
+    <Compile Include="Pass2\CModel\Code\CClass.cs" />
+    <Compile Include="Pass2\CModel\Code\CClassAttribute.cs" />
+    <Compile Include="Pass2\CModel\Code\CConstructor.cs" />
+    <Compile Include="Pass2\CModel\Code\CField.cs" />
+    <Compile Include="Pass2\CModel\Code\CFile.cs" />
+    <Compile Include="Pass2\CModel\Code\CInterface.cs" />
+    <Compile Include="Pass2\CModel\Code\CMethod.cs" />
+    <Compile Include="Pass2\CModel\Code\CMethodAttribute.cs" />
+    <Compile Include="Pass2\CModel\Code\CNamespace.cs" />
+    <Compile Include="Pass2\CModel\Code\CNamespaceRef.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CNuGet.cs" />
+    <Compile Include="Pass2\CModel\Code\COperationIs.cs" />
+    <Compile Include="Pass2\CModel\Code\CParameter.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CPostBuildEventStep.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CProject.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CProjectContent.cs" />
+    <Compile Include="Pass2\CModel\Code\CProjectType.cs" />
+    <Compile Include="Pass2\CModel\Code\CProperty.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CSolution.cs" />
+    <Compile Include="Utility\ConsistentGuid.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\CProjectExtension.cs" />
+    <Compile Include="Pass3\gRPC\SProtoFileToProtoFileConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\CSolutionExtension.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\CStoredProcedureToCProtoFileConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\CViewToCProtoFileConverter.cs" />
+    <Compile Include="Interface\ICodeWriter.cs" />
+    <Compile Include="Interface\IFileWriter.cs" />
+    <Compile Include="Interface\ICAssemblyInfoVisitor.cs" />
+    <Compile Include="Interface\ICClassAttributeVisitor.cs" />
+    <Compile Include="Interface\ICClassVisitor.cs" />
+    <Compile Include="Interface\ICConstructorVisitor.cs" />
+    <Compile Include="Interface\ICFieldVisitor.cs" />
+    <Compile Include="Interface\ICInterfaceVisitor.cs" />
+    <Compile Include="Interface\ICMethodAttributeVisitor.cs" />
+    <Compile Include="Interface\ICMethodVisitor.cs" />
+    <Compile Include="Interface\ICParameterVisitor.cs" />
+    <Compile Include="Interface\ICProjectContentVisitor.cs" />
+    <Compile Include="Interface\ICProjectFileVisitor.cs" />
+    <Compile Include="Interface\ICProjectVisitor.cs" />
+    <Compile Include="Interface\ICPropertyVisitor.cs" />
+    <Compile Include="Interface\ICSolutionVisitor.cs" />
+    <Compile Include="Pass1\KModel\KApplicationSolution.cs" />
+    <Compile Include="Pass1\KModel\Project\KDataStoreProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KDataLayerProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KDataLayerTestProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KDockerBuildScriptProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcClientTestProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcIntegrationBusinessTestProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcIntegrationProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcIntegrationServiceClientTestProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcServiceIntegrationTestDbProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcServiceIntegrationTestProject.cs" />
+    <Compile Include="Pass1\KModel\Project\KGrpcServiceUnitTestProject.cs" />
+    <Compile Include="Pass2\DataLayerProject\Table\CTableToCClassConverter.cs" />
+    <Compile Include="Pass2\CModel\CodeProject\CSolutionGroup.cs" />
+    <Compile Include="Interface\IMetadataConfigService.cs" />
+    <Compile Include="Interface\ISeedDataService.cs" />
+    <Compile Include="Pass1\KModel\KPart.cs" />
+    <Compile Include="Pass1\KModel\KProject.cs" />
+    <Compile Include="Pass1\KModel\gRpc\KProtoFile.cs" />
+    <Compile Include="Pass1\KModel\gRpc\KProtoRef.cs" />
+    <Compile Include="Pass1\KModel\gRpc\KProtoRpc.cs" />
+    <Compile Include="Pass1\KModel\KSolution.cs" />
+    <Compile Include="Pass1\KModel\KSolutionGroup.cs" />
+    <Compile Include="Pass1\KModel\Data\KStoredProcedure.cs" />
+    <Compile Include="Pass1\KModel\Data\KTable.cs" />
+    <Compile Include="Pass1\KModel\Data\KTableType.cs" />
+    <Compile Include="Pass1\KModel\Data\KView.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CColumn.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CSchema.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CSeedScript.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CStoredProcedure.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CStoredProcedureParameter.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CStoredProcList.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CTable.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CTableRow.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CTableRowData.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CTableType.cs" />
+    <Compile Include="Pass2\CModel\DataStore\CView.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoEnum.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoEnumValue.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoFile.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoFileRef.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoMessage.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoMessageField.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoRpc.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoRpcRef.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoRpcRefDirection.cs" />
+    <Compile Include="Pass2\CModel\Proto\CProtoService.cs" />
+    <Compile Include="Pass2\CModel\CBatchFile.cs" />
+    <Compile Include="Pass2\CModel\CPlantUml.cs" />
+    <Compile Include="Pass2\CModel\CText.cs" />
+    <Compile Include="Pass3\obsolete_SqlServer\STableToSqlServerTableConverter.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerStoredProcedureReader.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerTableReader.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerTableTypeReader.cs" />
+    <Compile Include="Pass3\obsolete_SqlServer\SqlServerTableWriter.cs" />
+    <Compile Include="Pass1\SqlServer\SqlServerViewReader.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CSchemaToSqlServerSchemaConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CStoredProcedureToSSqlServerStoredProcedureConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToSqlServerStoredProcedureAddConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToSqlServerStoredProcedureAddUpdateConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToSqlServerTableConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToCSeedScriptConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToCStoredProcedureDeleteConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableToCStoredProcedureUpdateConverter.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\Converter\CTableTypeToSqlServerTableTypeConverter.cs" />
+    <Compile Include="Pass2\DataLayerProject\Table\KViewToCTableConverter.cs" />
+    <Compile Include="Pass2\DataLayerProject\Table\CViewToCTableConverter.cs" />
+    <Compile Include="Pass1\Service\SqlServerTableToCTableConverter.cs" />
+    <Compile Include="Pass1\Service\SqlServerViewToCViewConverter.cs" />
+    <Compile Include="Pass2\DataLayerProject\Table\KStoredProcedureToCClassConverter.cs" />
+    <Compile Include="Pass2\DataLayerProject\Table\CTableTypeToCClassConverter.cs" />
+    <Compile Include="Utility\CodeWriter.cs" />
+    <Compile Include="Utility\DDLHelperExtension.cs" />
+    <Compile Include="Utility\FileWriter.cs" />
+    <Compile Include="Utility\IPrereqChecker.cs" />
+    <Compile Include="Utility\NugetQueryService.cs" />
+    <Compile Include="Utility\PrereqChecker.cs" />
+    <Compile Include="Utility\RelativePathBuilder.cs" />
+    <Compile Include="Utility\SnakeCaseTranslator.cs" />
+    <Compile Include="Utility\SqlMapper.cs" />
+    <Compile Include="Pass3\VisualStudio2017\CProjectContentVisitor.cs" />
+    <Compile Include="Pass3\VisualStudio2017\CProjectFileVisitor.cs" />
+    <Compile Include="Pass3\VisualStudio2017\CProjectVisitor.cs" />
+    <Compile Include="Pass3\VisualStudio2017\CVisualStudioVisitorBase.cs" />
+    <Compile Include="Interface\IReader.cs" />
+    <Compile Include="Interface\IVistor2.cs" />
+    <Compile Include="Interface\IWriter.cs" />
+    <Compile Include="Pass2\DataLayerProject\RelationalDataLayerServiceProjectService.cs" />
+    <Compile Include="Pass4\Diagram\MSolutionListToPlantUmlConverter.cs" />
+    <Compile Include="Pass2\Docker\BuildScriptService.cs" />
+    <Compile Include="Pass3\VisualStudio2017\FastSolutionVisitor.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\GrpcServiceClientTestProjectService.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\GrpcServiceIntegrationTestBusinessProjectService.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\GrpcServiceIntegrationTestDbService.cs" />
+    <Compile Include="Pass2\IntegrationTestProject\GrpcServiceIntegrationTestProjectService.cs" />
+    <Compile Include="Pass2\UnitTestProject\GrpcServiceUnitTestProjectService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\GrpcIntegrationServiceProjectService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\GrpcServiceProjectService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\GrpcPortService.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\GrpcServiceProjectServiceBase.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\KDataLayerProjectToKProtoFileConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\CProjectToDockerFileConverter.cs" />
+    <Compile Include="Pass2\GrpcServiceProject\ModelToProtoCClassConverter.cs" />
+    <Compile Include="Pass0\Model\KickstartWizardModel.cs" />
+    <Compile Include="Pass0\Presenter\KickstartWizardPresenter.cs" />
+    <Compile Include="Pass0\Presenter\MenuPresenter.cs" />
+    <Compile Include="Pass0\Presenter\ProtoFilePresenter.cs" />
+    <Compile Include="Pass0\Service\IKickstartWizardService.cs" />
+    <Compile Include="Pass0\Service\IMessageBoxDisplayService.cs" />
+    <Compile Include="Pass0\Service\KickstartWizardService.cs" />
+    <Compile Include="Pass0\View\IDatabaseSqlView.cs" />
+    <Compile Include="Pass0\View\IGenerationView.cs" />
+    <Compile Include="Pass0\View\IKickstartWizardView.cs" />
+    <Compile Include="Pass0\View\IMenuView.cs" />
+    <Compile Include="Pass0\View\IProjectView.cs" />
+    <Compile Include="Pass0\View\IProtoFileView.cs" />
+    <Compile Include="Pass0\View\IView.cs" />
+    <Compile Include="Utility\VisualStudioScanner.cs" />
+    <EmbeddedResource Include="Boilerplate\GrpcLogger.cs" />
+    <Compile Include="Pass2\KSolutionToCSolutionConverter.cs" />
+    <Compile Include="Pass2\SeedData\KTableToCSeedScriptConverter.cs" />
+    <Compile Include="Pass2\SolutionFileService.cs" />
+    <Compile Include="Pass2\DataStoreProject\SqlServer\SqlServerProjectService.cs" />
+    <Compile Include="Pass3\CVisualStudioVisitor.cs" />
+    <Compile Include="Pass2\SampleData\SampleDataService.cs" />
+    <Compile Include="Pass3\VisualStudioSolutionWriter.cs" />
+    <Compile Include="Utility\DirectoryService.cs" />
+    <Compile Include="Pass1\Excel\ExcelSeedDataService.cs" />
+    <Compile Include="Pass1\Excel\ExcelToKSolutionGroupConverter.cs" />
+    <Compile Include="Pass1\Excel\ExcelToRowDataConverter.cs" />
+    <Compile Include="Pass1\Service\SqlMacroService.cs" />
+    <Compile Include="Pass1\Excel\KSolutionGroupToExcelConverter.cs" />
+    <Compile Include="Pass1\Service\ProtoToKProtoConverter.cs" />
+    <Compile Include="Pass1\Service\ResourceFileReader.cs" />
+    <Compile Include="Pass1\DbToKSolutionConverter.cs" />
+    <Compile Include="Pass4\SolutionBuilder.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\clean.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\clean.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\migrate.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\migrate.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\repair.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\repair.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\migrate.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\clean.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\clean.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\migrate.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\repair.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\repair.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\set-vars.sh" />
+    <None Include="Kickstart.snk" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Pass3\VisualStudio2017\app.config" />
+    <EmbeddedResource Include="Boilerplate\.gitignore" />
+    <EmbeddedResource Include="Boilerplate\.ruleset" />
+    <EmbeddedResource Include="Boilerplate\Build\build-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\build-output.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\docker-image.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-build-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-build-output.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-docker-image.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-test-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\service.json2">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Boilerplate\Build\test-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\web.json" />
+    <EmbeddedResource Include="Boilerplate\NuGet.config" />
+    <EmbeddedResource Include="Boilerplate\Grpc\regen-grpc.cmd" />
+    <EmbeddedResource Include="Boilerplate\Grpc\regen-grpc.sh" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Docker\" />
+    <Folder Include="Pass2\WebProject\" />
+    <Folder Include="Properties\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets" Condition="Exists('..\..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\packages\NETStandard.Library.2.0.3\build\netstandard2.0\NETStandard.Library.targets'))" />
+  </Target>
+</Project>

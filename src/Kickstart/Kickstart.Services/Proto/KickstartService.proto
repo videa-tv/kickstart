@@ -1,0 +1,121 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions {
+	string version = 50000;
+}
+
+package kickstart.services.types;
+
+option csharp_namespace = "Kickstart.Services.Types";
+
+// * 1.0.0 - Initial contract implementation
+
+option (version) = "1.0.0"; //Initial Implementation
+
+/*
+*/
+
+service KickstartServiceApi {
+  rpc KickstartSolution(KickstartSolutionRequest) returns (KickstartSolutionResponse);
+  rpc ConvertDDL(ConvertDDLRequest) returns (ConvertDDLResponse);
+  rpc SplitDDL(SplitDDLRequest) returns (SplitDDLResponse);
+  rpc QueryDatabaseTables (QueryDatabaseTablesRequest) returns (QueryDatabaseTablesResponse);
+}
+
+message QueryDatabaseTablesRequest {
+	string schema =1;
+}
+
+message QueryDatabaseTablesResponse {
+	repeated DatabaseTable tables=1;
+}
+
+message DatabaseTable {
+	string schema_name=1;
+	string table_name=2;
+	repeated DatabaseColumn columns=3;
+}
+
+message DatabaseColumn {
+	string column_name =1;
+	repeated DatabaseForeignColumn foreign_keys =2;
+}
+
+message DatabaseForeignColumn {
+	string schema_name =1;
+	string table_name=2;
+	string column_name =3;
+}
+
+message KickstartSolutionRequest {
+	enum DatabaseTypes {
+		Unknown = 0;
+		Postgres = 1;
+		SqlServer = 2;
+		MySql = 3;
+		Kinesis = 4;
+		Kafka = 5;
+	  }
+	 DatabaseTypes DatabaseType = 1;
+     bool GenerateDatabaseProject = 2;
+	 bool GenerateDataLayerProject = 3;
+	 bool GenerateGrpcServiceProject = 4;
+	 bool GenerateGrpcUnitTestProject = 5;
+	 bool GenerateGrpcClientProject =6;
+	 bool GenerateWebAppProject =7;
+	 bool GenerateDockerComposeProject =8;
+	 string CompanyName = 9;
+	 string SolutionName = 10;
+	 string ProjectName = 11;
+	 string ProtoFileText =12;
+	 bool ConvertToSnakeCase = 13;
+}
+
+message KickstartSolutionResponse {
+	bool Succeeded = 1;
+	string ErrorMessage = 2;
+	string GeneratedFilesBase64 = 3;
+
+}
+
+message ConvertDDLRequest {
+	DatabaseTypes DatabaseType = 1;
+	bool ConvertToSnakeCase = 2;
+	string UnconvertedTableDDL = 3;
+	string UnconvertedTableTypeDDL = 4;
+
+	string UnconvertedStoredProcedureDDL = 5;
+
+}
+
+message ConvertDDLResponse {
+	string ConvertedTableDDL =1;
+	string ConvertedTableTypeDDL =2;
+	string ConvertedStoredProcedureDDL =3;
+	string ConvertedDmsJson=4;
+	string ZipAsBase64 = 5;
+}
+
+message SplitDDLRequest {
+	DatabaseTypes DatabaseType = 1;
+	string UnSplitTableDDL = 2;
+	string UnSplitTableTypeDDL = 3;
+	string UnSplitViewDDL = 4;
+	string UnSplitFunctionDDL = 5;
+	string UnSplitStoredProcedureDDL = 6;
+
+}
+
+message SplitDDLResponse {
+	string ZipAsBase64 = 1;
+}
+
+
+enum DatabaseTypes {
+		 Unknown = 0;
+        Postgres =1;
+        SqlServer =2;
+        MySql = 3;
+}

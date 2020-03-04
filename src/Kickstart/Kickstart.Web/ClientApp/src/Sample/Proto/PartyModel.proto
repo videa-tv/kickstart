@@ -1,0 +1,145 @@
+﻿syntax = "proto3";
+
+package company.partymodel.types;
+
+option csharp_namespace = "Company.PartyModel.Proto.Types";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/wrappers.proto";
+
+service PartyService {
+	rpc ListParties(ListPartiesRequest) returns (ListPartiesResponse);
+	rpc AddParty(AddPartyRequest) returns (AddPartyResponse);
+	rpc UpdateParty(UpdatePartyRequest) returns (UpdatePartyResponse);
+
+	rpc RemoveParty(RemovePartyRequest) returns (RemovePartyResponse);
+
+	
+	rpc ListPartyRelationships(ListPartyRelationshipsRequest) returns (ListPartyRelationshipsResponse);
+	rpc AddRelationshipToParties(AddRelationshipToPartiesRequest) returns (AddRelationshipToPartiesResponse);
+	rpc RemoveRelationshipFromParties(RemoveRelationshipFromPartiesRequest) returns (RemoveRelationshipFromPartiesResponse);
+
+
+	rpc ListPartyTypes(ListPartyTypesRequest) returns (ListPartyTypesResponse);
+	rpc AddPartyType(AddPartyTypeRequest) returns (AddPartyTypeResponse);
+
+	rpc ListPartyRelationshipTypes(ListPartyRelationshipTypesRequest) returns (ListPartyRelationshipTypesResponse);
+	rpc AddPartyRelationshipType(AddPartyRelationshipTypeRequest) returns (AddPartyRelationshipTypeResponse);
+
+}
+message PartyType {
+	string party_type_name=1;
+	string part_type_description=2;
+
+}
+
+message Party {
+	string party_external_id=1;
+	PartyType party_type=2;
+	string party_name=3;
+	string soft_deleted=4;
+}
+
+message ListPartiesRequest {
+	PartyType party_type=1;
+}
+
+message ListPartiesResponse {
+	repeated Party parties = 1;
+}
+
+message AddPartyRequest {
+	Party party = 1;
+}
+
+message AddPartyResponse {
+	Party party = 1;
+}
+
+message UpdatePartyRequest {
+	Party party = 1;
+}
+
+message UpdatePartyResponse {
+	Party party = 1;
+}
+
+message RemovePartyRequest {
+	string party_name=1;
+	bool soft_delete =2;
+}
+
+message RemovePartyResponse {
+}
+
+message ListPartyRelationshipsRequest {
+	repeated string party_external_ids=1;
+}
+
+message AddRelationshipToPartiesRequest {
+	repeated PartyRelationship party_relationships=1;
+}
+
+message AddRelationshipToPartiesResponse {
+}
+
+message RemoveRelationshipFromPartiesRequest {
+	repeated PartyRelationship party_relationships=1;
+}
+
+message RemoveRelationshipFromPartiesResponse {
+}
+
+
+
+message PartyRelationshipType {
+	string party_relationship_type_name=1;
+	string party_relationship_type_description=2;
+}
+
+
+message PartyRelationship {
+	PartyRelationshipType party_relationship_type=1;
+	Party party_from =2;
+	Party party_to =3;
+	google.protobuf.Timestamp effective_from=4;
+	google.protobuf.Timestamp effective_to=5;
+
+}
+
+message ListPartyRelationshipsResponse {
+	repeated PartyRelationship party_relationships = 1;
+}
+
+message ListPartyTypesRequest {
+}
+
+message ListPartyTypesResponse {
+	repeated PartyType party_types = 1;
+}
+
+message AddPartyTypeRequest {
+	PartyType party_type = 1;
+}
+
+message AddPartyTypeResponse {
+	PartyType party_type = 1;
+}
+
+
+message ListPartyRelationshipTypesRequest {
+}
+
+message ListPartyRelationshipTypesResponse {
+	repeated PartyRelationshipType party_relationship_types = 1;
+}
+
+message AddPartyRelationshipTypeRequest {
+	PartyRelationshipType party_relationship_type = 1;
+}
+
+message AddPartyRelationshipTypeResponse {
+	PartyRelationshipType party_relationship_type = 1;
+}
+
+

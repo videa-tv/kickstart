@@ -1,0 +1,64 @@
+{
+  "id": { { # # COMPANYNAME # # _ # # PROJECTNAME # # _WEB_DCOS_AppId }
+},
+  "instances": {{ APP_INSTANCES }},
+  "cpus": 0.75,
+  "mem": 512,
+  "disk": 0,
+  "gpus": 0,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "$imageNameWeb",
+      "network": "USER",
+      "portMappings": [
+        {
+          "containerPort": 5000,
+          "servicePort": 10101,
+          "name": "http"
+        }
+      ],
+      "privileged": false,
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "portIndex": 0,
+      "path": "/health",
+      "protocol": "HTTP",
+      "ignoreHttp1xx": false
+    }
+  ],
+  "ipAddress": {
+    "groups": [],
+    "networkName": "dcos"
+  },
+  "secrets": {
+    "secret0": {
+      "source": "##projectname##-web-cert"
+    }
+  },
+  "unreachableStrategy": {
+    "inactiveAfterSeconds": 300,
+    "expungeAfterSeconds": 600
+  },
+  "killSelection": "YOUNGEST_FIRST",
+  "requirePorts": false,
+  "labels": {
+    "HAPROXY_GROUP": "external",
+    "HAPROXY_0_VHOST": "##projectname##.abacus.##companyname##.io",
+    "HAPROXY_0_BACKEND_HEAD": "backend {backend}\n balance {balance}\n mode {mode}\n compression algo gzip\n compression type text/html text/plain text/css application/javascript application/json\n"
+  },
+  "env": {
+    "##CompanyName##_##ProjectName##_SiteSettings__DataProtectionCertificate": {
+      "secret": "secret0"
+    },
+    "##COMPANYNAME##_SIRS_Serilog__MinimumLevel": {{ ##COMPANYNAME##_##PROJECTNAME##_WEB_Serilog__MinimumLevel }}
+  }
+}

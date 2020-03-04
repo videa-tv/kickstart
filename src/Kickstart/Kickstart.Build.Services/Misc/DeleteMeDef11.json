@@ -1,0 +1,168 @@
+{
+  "source": 1,
+  "id": 437,
+  "revision": 1,
+  "name": "DeleteMeDef12",
+  "description": null,
+  "createdBy": {
+    "displayName": "Stephens, John (CMG-Company)",
+    "url": "https://tfs.company.tv/tfs/Company/_apis/Identities/78e1f086-3d3e-45f8-92c9-893cf1c3d831",
+    "_links": { "avatar": { "href": "https://tfs.company.tv/tfs/Company/_api/_common/identityImage?id=78e1f086-3d3e-45f8-92c9-893cf1c3d831" } },
+    "id": "78e1f086-3d3e-45f8-92c9-893cf1c3d831",
+    "uniqueName": "CMG\\jstephens2",
+    "imageUrl": "https://tfs.company.tv/tfs/Company/_api/_common/identityImage?id=78e1f086-3d3e-45f8-92c9-893cf1c3d831"
+  },
+  "createdOn": "2018-09-18T14:19:04.710Z",
+  "modifiedBy": {
+    "displayName": "Stephens, John (CMG-Company)",
+    "url": "https://tfs.company.tv/tfs/Company/_apis/Identities/78e1f086-3d3e-45f8-92c9-893cf1c3d831",
+    "_links": { "avatar": { "href": "https://tfs.company.tv/tfs/Company/_api/_common/identityImage?id=78e1f086-3d3e-45f8-92c9-893cf1c3d831" } },
+    "id": "78e1f086-3d3e-45f8-92c9-893cf1c3d831",
+    "uniqueName": "CMG\\jstephens2",
+    "imageUrl": "https://tfs.company.tv/tfs/Company/_api/_common/identityImage?id=78e1f086-3d3e-45f8-92c9-893cf1c3d831"
+  },
+  "modifiedOn": "2018-09-18T14:19:04.710Z",
+  "isDeleted": false,
+  "path": "\\",
+  "variables": {},
+  "variableGroups": [],
+  "environments": [
+    {
+      "id": 2582,
+      "name": "Dev",
+      "rank": 1,
+      "owner": {
+        "displayName": "Stephens, John (CMG-Company)",
+        "url": "https://tfs.company.tv/tfs/Company/_apis/Identities/78e1f086-3d3e-45f8-92c9-893cf1c3d831",
+        "_links": { "avatar": { "href": "https://tfs.company.tv/tfs/Company/_api/_common/identityImage?id=78e1f086-3d3e-45f8-92c9-893cf1c3d831" } },
+        "id": "78e1f086-3d3e-45f8-92c9-893cf1c3d831",
+        "uniqueName": "CMG\\jstephens2",
+        "imageUrl": "https://tfs.company.tv/tfs/Company/_api/_common/identityImage?id=78e1f086-3d3e-45f8-92c9-893cf1c3d831"
+      },
+      "variables": {},
+      "variableGroups": [],
+      "preDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 8067
+          }
+        ]
+      },
+      "deployStep": { "id": 8068 },
+      "postDeployApprovals": {
+        "approvals": [
+          {
+            "rank": 1,
+            "isAutomated": true,
+            "isNotificationOn": false,
+            "id": 8069
+          }
+        ]
+      },
+      "deployPhases": [
+        {
+          "deploymentInput": {
+            "parallelExecution": { "parallelExecutionType": "none" },
+            "skipArtifactsDownload": false,
+            "artifactsDownloadInput": { "downloadInputs": [] },
+            "queueId": 7,
+            "demands": [],
+            "enableAccessToken": false,
+            "timeoutInMinutes": 0,
+            "jobCancelTimeoutInMinutes": 1,
+            "condition": "succeeded()",
+            "overrideInputs": {}
+          },
+          "rank": 1,
+          "phaseType": 1,
+          "name": "Run on agent",
+          "workflowTasks": []
+        }
+      ],
+      "environmentOptions": {
+        "emailNotificationType": "OnlyOnFailure",
+        "emailRecipients": "release.environment.owner;release.creator",
+        "skipArtifactsDownload": false,
+        "timeoutInMinutes": 0,
+        "enableAccessToken": false,
+        "publishDeploymentStatus": false,
+        "badgeEnabled": false,
+        "autoLinkWorkItems": false
+      },
+      "demands": [],
+      "conditions": [],
+      "executionPolicy": {
+        "concurrencyCount": 0,
+        "queueDepthCount": 0
+      },
+      "schedules": [],
+      "retentionPolicy": {
+        "daysToKeep": 30,
+        "releasesToKeep": 1,
+        "retainBuild": false
+      },
+      "properties": {},
+      "preDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "postDeploymentGates": {
+        "id": 0,
+        "gatesOptions": null,
+        "gates": []
+      },
+      "badgeUrl": "https://tfs.company.tv/tfs/Company/_apis/public/Release/badge/421987af-ee2d-4a53-99f3-b5b4e017cae9/437/2582"
+    }
+  ],
+  "artifacts": [
+    {
+      "sourceId": "421987af-ee2d-4a53-99f3-b5b4e017cae9:726",
+      "type": "Build",
+      "alias": "DeleteMe5",
+      "definitionReference": {
+        "defaultVersionBranch": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionSpecific": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionTags": {
+          "id": "",
+          "name": ""
+        },
+        "defaultVersionType": {
+          "id": "latestType",
+          "name": "Latest"
+        },
+        "definition": {
+          "id": "726",
+          "name": "DeleteMe5"
+        },
+        "project": {
+          "id": "421987af-ee2d-4a53-99f3-b5b4e017cae9",
+          "name": "Company"
+        },
+        "artifactSourceDefinitionUrl": {
+          "id": "https://tfs.company.tv/tfs/_permalink/_build/index?collectionId=1d863be6-31e4-4e2f-a16f-76a1a1538c23&projectId=421987af-ee2d-4a53-99f3-b5b4e017cae9&definitionId=726",
+          "name": ""
+        }
+      },
+      "isPrimary": true
+    }
+  ],
+  "triggers": [],
+  "releaseNameFormat": "",
+  "url": "https://tfs.company.tv/tfs/Company/421987af-ee2d-4a53-99f3-b5b4e017cae9/_apis/Release/definitions/437",
+  "_links": {
+    "self": { "href": "https://tfs.company.tv/tfs/Company/421987af-ee2d-4a53-99f3-b5b4e017cae9/_apis/Release/definitions/437" },
+    "web": { "href": "https://tfs.company.tv/tfs/Company/421987af-ee2d-4a53-99f3-b5b4e017cae9/_release?definitionId=437" }
+  },
+  "tags": [],
+  "properties": {}
+}

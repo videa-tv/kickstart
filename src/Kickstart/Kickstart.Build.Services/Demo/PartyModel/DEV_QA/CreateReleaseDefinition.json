@@ -1,0 +1,36 @@
+{
+  "service_name": "partymodel-service",
+  "reuse_aws_stack_from_service_name": "existingservice",
+  "service_folder": "/team1/",
+  "configuration_folder": "/teams/team1/",
+  "release_definition": {
+    "release_definition_name": "VO.App.PartyModel.DCOS",
+    "build_definitions": [
+      {
+        "build_definition_name": "Company.PartyModel.Capture"
+      }
+    ],
+    "environments": [
+      {
+        "environment_name": "DEV",
+        "environment_tag": "DEV"
+      },
+	    {
+        "environment_name": "QA",
+        "environment_tag": "QA"
+      }
+    ]
+  },
+  "database_servers": [
+    {
+      "dbms_type": "POSTGRES",
+      "server_location": "AWS",
+      "databases": [
+        {
+          "database_name": "partymodelstate",
+          "project_folder": "Company.PartyModel.State.Db"
+        }
+      ]
+    }
+  ]
+}

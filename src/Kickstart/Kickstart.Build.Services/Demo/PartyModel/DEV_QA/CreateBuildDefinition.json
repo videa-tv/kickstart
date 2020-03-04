@@ -1,0 +1,8 @@
+{
+  "service_name": "partymodel-service",
+  "build_definition": {
+    "build_definition_name": "Company.PartyModel.Capture",
+    "repo_name": "partymodel",
+    "repo_path": "PartyModel"
+  }
+}

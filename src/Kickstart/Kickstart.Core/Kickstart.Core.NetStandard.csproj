@@ -1,0 +1,123 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Kickstart.Core.NetStandard</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="InputMetadata\**" />
+    <EmbeddedResource Remove="InputMetadata\**" />
+    <None Remove="InputMetadata\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="AssemblyInfo1.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Boilerplate\.gitignore" />
+    <None Remove="Boilerplate\.ruleset" />
+    <None Remove="Boilerplate\Build\build-apps.sh" />
+    <None Remove="Boilerplate\Build\build-output.sh" />
+    <None Remove="Boilerplate\Build\docker-image.sh" />
+    <None Remove="Boilerplate\Build\run-build-apps.sh" />
+    <None Remove="Boilerplate\Build\run-build-output.sh" />
+    <None Remove="Boilerplate\Build\run-docker-image.sh" />
+    <None Remove="Boilerplate\Build\run-test-apps.sh" />
+    <None Remove="Boilerplate\Build\service.json2" />
+    <None Remove="Boilerplate\Build\set-vars.sh" />
+    <None Remove="Boilerplate\Build\test-apps.sh" />
+    <None Remove="Boilerplate\Build\web.json" />
+    <None Remove="Boilerplate\Flyway\MySql\clean.cmd" />
+    <None Remove="Boilerplate\Flyway\MySql\clean.sh" />
+    <None Remove="Boilerplate\Flyway\MySql\migrate.cmd" />
+    <None Remove="Boilerplate\Flyway\MySql\migrate.sh" />
+    <None Remove="Boilerplate\Flyway\MySql\repair.cmd" />
+    <None Remove="Boilerplate\Flyway\MySql\repair.sh" />
+    <None Remove="Boilerplate\Flyway\Postgres\clean.cmd" />
+    <None Remove="Boilerplate\Flyway\Postgres\clean.sh" />
+    <None Remove="Boilerplate\Flyway\Postgres\migrate.cmd" />
+    <None Remove="Boilerplate\Flyway\Postgres\migrate.sh" />
+    <None Remove="Boilerplate\Flyway\Postgres\repair.cmd" />
+    <None Remove="Boilerplate\Flyway\Postgres\repair.sh" />
+    <None Remove="Boilerplate\Grpc\regen-grpc.cmd" />
+    <None Remove="Boilerplate\Grpc\regen-grpc.sh" />
+    <None Remove="Boilerplate\NuGet.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Boilerplate\.ruleset" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Boilerplate\.gitignore" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Boilerplate\Build\build-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\build-output.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\docker-image.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-build-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-build-output.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-docker-image.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\run-test-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\service.json2" />
+    <EmbeddedResource Include="Boilerplate\Build\set-vars.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\test-apps.sh" />
+    <EmbeddedResource Include="Boilerplate\Build\web.json" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\clean.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\clean.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\migrate.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\migrate.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\repair.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\MySql\repair.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\clean.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\clean.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\migrate.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\migrate.sh" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\repair.cmd" />
+    <EmbeddedResource Include="Boilerplate\Flyway\Postgres\repair.sh" />
+    <EmbeddedResource Include="Boilerplate\Grpc\regen-grpc.cmd" />
+    <EmbeddedResource Include="Boilerplate\Grpc\regen-grpc.sh" />
+    <EmbeddedResource Include="Boilerplate\NuGet.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.6.0" />
+    <PackageReference Include="Dapper" Version="2.0.30" />
+    <PackageReference Include="DocumentFormat.OpenXml" Version="2.9.1" />
+    <PackageReference Include="Google.Protobuf" Version="3.11.1" />
+    <PackageReference Include="Grpc.Core" Version="2.25.0" />
+    <PackageReference Include="Inflector.NetStandard" Version="1.2.2" />
+    <PackageReference Include="Microsoft.Build" Version="16.4.0" />
+    <PackageReference Include="Microsoft.Build.Framework" Version="16.4.0" />
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.4.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.FileExtensions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.0" />
+    <PackageReference Include="Microsoft.SqlServer.DacFx.x64" Version="150.4573.2" />
+    <PackageReference Include="MySql.Data" Version="8.0.18" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Npgsql" Version="4.1.2" />
+    <PackageReference Include="NuGet.Common" Version="5.4.0" />
+    <PackageReference Include="NuGet.Protocol" Version="5.4.0" />
+    <PackageReference Include="NuGet.Resolver" Version="5.4.0" />
+    <PackageReference Include="Onion.SolutionParser.Parser.Standard" Version="1.0.0" />
+    <PackageReference Include="Serilog" Version="2.9.0" />
+    <PackageReference Include="Serilog.Extensions.Logging" Version="3.0.1" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.1.0" />
+    <PackageReference Include="SpreadsheetLight.Core" Version="3.4.0" />
+    <PackageReference Include="StructureMap.Microsoft.DependencyInjection" Version="2.0.0" />
+    <PackageReference Include="System.CodeDom" Version="4.7.0" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
+  </ItemGroup>
+
+</Project>

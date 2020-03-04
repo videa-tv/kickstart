@@ -1,0 +1,21 @@
+{
+  "author": "John Stephens",
+  "classifications": [],
+  "description": "template description A",
+  "name": "",
+  "defaultName": "MyProject",
+  "identity": "MegaSolution",
+  "groupIdentity": "MegaSolution.Template",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "shortName": "MegaSolution",
+  "sourceName": "MegaSolution",
+  "guids": [],
+  "primaryOutputs": [
+    {
+      "path": "MegaSolution.csproj"
+    }
+  ]
+}

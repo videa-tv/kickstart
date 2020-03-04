@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kickstart.SqlServer.SnakeCase.App", "Kickstart.SqlServer.SnakeCase.App\Kickstart.SqlServer.SnakeCase.App.csproj", "{6F8ECFF4-315F-414E-80ED-0229E1C98608}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6F8ECFF4-315F-414E-80ED-0229E1C98608}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8ECFF4-315F-414E-80ED-0229E1C98608}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8ECFF4-315F-414E-80ED-0229E1C98608}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8ECFF4-315F-414E-80ED-0229E1C98608}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1FB106E7-6362-4EA4-8769-D4C28942E81F}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,72 @@
+{
+  "id": {{ ##COMPANYNAME##_##PROJECTNAME##_SVC_DCOS_AppId }},
+  "instances": {{ APP_INSTANCES }},
+  "cpus": 0.1,
+  "mem": {% if ##COMPANYNAME##_##PROJECTNAME##_SVC_DCOS_MEMORY is defined %} {{##COMPANYNAME##_##PROJECTNAME##_SVC_DCOS_}} {% else %} 128 {% endif %},
+  "disk": 0,
+  "gpus": 0,
+  "container": {
+    "type": "DOCKER",
+    "volumes": [],
+    "docker": {
+      "image": "$imageNameService",
+      "network": "USER",
+      "portMappings": [
+        {
+          "containerPort": ##PORT##,
+          "hostPort": 0,
+          "protocol": "tcp",
+          "name": "grpc"
+        }
+      ],
+      "privileged": false,
+      "forcePullImage": false
+    }
+  },
+  "healthChecks": [
+    {
+      "gracePeriodSeconds": 300,
+      "intervalSeconds": 60,
+      "timeoutSeconds": 20,
+      "maxConsecutiveFailures": 3,
+      "portIndex": 0,
+      "protocol": "COMMAND",
+      "command": {
+        "value": "/tools/grpc-health-check.sh localhost:##PORT##"
+      }
+    }
+  ],
+  "ipAddress": {
+    "groups": [],
+    "networkName": "dcos"
+  },
+  "secrets": {
+    "secret0": {
+      "source": {{##COMPANYNAME##_##PROJECTNAME##_SVC_CONFIGCENTERSERVICETARGET_SECRET}}
+    }
+    {% if ##COMPANYNAME##_##PROJECTNAME##_SVC_DB_CONNECTION_SECRET is defined %}
+    ,
+    "secret1": {
+      "source": {{ ##COMPANYNAME##_##PROJECTNAME##_SVC_DB_CONNECTION_SECRET }}
+    }
+    {% endif %}
+  },
+  "env": {
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_Serilog__MinimumLevel": {{ ##COMPANYNAME##_##PROJECTNAME##_SVC_Serilog__MinimumLevel }},
+    {% if ##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__Enabled is defined %}
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__Enabled": {{ ##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__Enabled }},
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__TracingAddress": {{ ##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__TracingAddress }},
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__ServiceName": {{ ##COMPANYNAME##_##PROJECTNAME##_SVC_Tracing__ServiceName }},
+    {% endif %}
+
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_ConfigCenterServiceTarget": {
+      "secret": "secret0"
+    },
+    {% if ##COMPANYNAME##_##PROJECTNAME##_SVC_DB_CONNECTION_SECRET is defined %}
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_ConnectionStrings__ServiceName": {
+      "secret": "secret1"
+    },
+    {% endif %}
+    "##COMPANYNAME##_##PROJECTNAME##_SVC_Grpc__Proxy": "$HOST:4140"
+  }
+}

@@ -1,0 +1,48 @@
+﻿syntax = "proto3";
+
+import "google/protobuf/descriptor.proto";
+
+extend google.protobuf.FileOptions {
+	string version = 50000;
+}
+
+package company.featureflag.services.types;
+
+option csharp_namespace = "Company.FeatureFlag.Services.Types";
+
+// * 1.0.0 - Initial contract implementation
+
+option (version) = "1.0.0"; //Initial Implementation
+
+/*
+* The Feature Flag Service provides methods to get feature flag values
+*/ 
+
+service FeatureFlagService {
+  // Gets Feature Flag information.
+  rpc GetFeatureFlag(GetFeatureFlagRequest) returns (GetFeatureFlagResponse);
+
+  //Updates feature flag
+  rpc SetFeatureFlag(SetFeatureFlagRequest) returns (SetFeatureFlagResponse);
+}
+
+message SetFeatureFlagRequest{
+	string station_external_id = 1;
+	string application_name = 2;
+	string feature_name = 3;
+	bool feature_enabled = 4;
+}
+message SetFeatureFlagResponse{
+	
+}
+
+message GetFeatureFlagRequest{
+	string station_external_id = 1;
+	string application_name = 2;
+	string feature_name = 3;
+}
+
+message GetFeatureFlagResponse{
+	string feature_flag_external_id = 1;
+	bool feature_enabled = 2;
+}

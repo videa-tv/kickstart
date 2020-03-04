@@ -1,0 +1,8 @@
+{
+  "service_name": "eventcapture-service",
+  "build_definition": {
+    "build_definition_name": "Company.EventStreaming.Capture",
+    "repo_name": "eventstreaming",
+    "repo_path": "EventCapture"
+  }
+}

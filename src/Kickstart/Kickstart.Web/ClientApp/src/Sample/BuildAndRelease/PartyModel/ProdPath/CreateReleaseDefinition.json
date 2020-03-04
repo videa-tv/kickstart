@@ -1,0 +1,37 @@
+{
+  "service_name": "eventcapture-service",
+  "reuse_aws_stack_from_service_name": "existingservice",
+  "service_folder": "/sales/",
+  "configuration_folder": "/teams/sales/",
+  "is_prod_path": "true",
+  "release_definition": {
+    "release_definition_name": "VO.ProdPath.EventCapture.DCOS",
+    "build_definitions": [
+      {
+        "build_definition_name": "Company.EventStreaming.Capture"
+      }
+    ],
+    "environments": [
+      {
+        "environment_name": "ALPHA",
+        "environment_tag": "ALPHA"
+      },
+      {
+        "environment_name": "PROD",
+        "environment_tag": "PROD"
+      }
+    ]
+  },
+  "database_servers": [
+    {
+      "dbms_type": "POSTGRES",
+      "server_location": "AWS",
+      "databases": [
+        {
+          "database_name": "eventcapturestate",
+          "project_folder": "Company.EventCapture.State.Db"
+        }
+      ]
+    }
+  ]
+}

@@ -105,7 +105,7 @@
     <PackageReference Include="Microsoft.Extensions.Logging" Version="3.1.0" />
     <PackageReference Include="Microsoft.SqlServer.DacFx.x64" Version="150.4573.2" />
     <PackageReference Include="MySql.Data" Version="8.0.18" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.2" />
     <PackageReference Include="Npgsql" Version="4.1.2" />
     <PackageReference Include="NuGet.Common" Version="5.4.0" />
     <PackageReference Include="NuGet.Protocol" Version="5.4.0" />
